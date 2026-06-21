@@ -1,65 +1,89 @@
 # SaaS Revenue & Customer Analytics Dashboard
 
+![Dashboard Preview](saas_dashboard.png)
+
 ## Project Overview
 
-This project presents an interactive SaaS Revenue & Customer Analytics Dashboard built using Power BI and PostgreSQL. The dashboard provides key business insights into revenue performance, customer retention, subscription plan performance, churn analysis, and recurring revenue trends.
+This project presents an interactive SaaS Revenue & Customer Analytics Dashboard developed using Power BI, PostgreSQL, SQL, and DAX. The dashboard provides actionable insights into revenue performance, customer retention, subscription plan performance, churn analysis, and Monthly Recurring Revenue (MRR).
 
-The objective of this project is to enable stakeholders to monitor business health, identify customer behavior patterns, and support data-driven decision making through real-time analytics.
+The primary objective of this project is to help stakeholders monitor key business metrics, identify customer behavior patterns, evaluate subscription performance, and support data-driven decision-making through interactive analytics.
+
+---
+
+## Project Highlights
+
+✔ Interactive KPI Dashboard
+
+✔ Revenue Analysis & Trend Monitoring
+
+✔ Customer Churn Analysis
+
+✔ Monthly Recurring Revenue (MRR) Tracking
+
+✔ Dynamic Date, Status, and Plan Filters
+
+✔ Business Intelligence Reporting using Power BI
+
+✔ PostgreSQL + SQL Data Pipeline
+
+✔ Executive-Level Dashboard Design
 
 ---
 
 ## Business Problem
 
-SaaS companies rely heavily on recurring revenue and customer retention. Understanding customer churn, subscription plan performance, and revenue trends is critical for sustainable growth.
+SaaS businesses depend heavily on recurring revenue and customer retention. Understanding customer churn, subscription plan performance, and revenue trends is critical for sustainable business growth.
 
-This dashboard addresses the following business questions:
+This dashboard helps answer the following business questions:
 
-- How much revenue is being generated?
-- What is the current customer base?
-- What percentage of customers are churning?
-- Which subscription plans generate the highest revenue?
-- How does revenue trend over time?
-- What is the Monthly Recurring Revenue (MRR)?
+* How much revenue is being generated?
+* What is the current customer base?
+* What percentage of customers are churning?
+* Which subscription plans generate the highest revenue?
+* How does revenue change over time?
+* What is the Monthly Recurring Revenue (MRR)?
 
 ---
 
 ## Dashboard KPIs
 
-| KPI | Description |
-|------|-------------|
-| Total Revenue | Total revenue generated from subscriptions |
-| Total Customers | Total customer count |
-| Active Customers | Customers with active subscriptions |
-| Cancelled Customers | Customers who have churned |
-| Churn Rate | Percentage of cancelled customers |
-| MRR | Monthly Recurring Revenue |
+| KPI                 | Description                                         |
+| ------------------- | --------------------------------------------------- |
+| Total Revenue       | Total revenue generated from subscriptions          |
+| Total Customers     | Total number of customers                           |
+| Active Customers    | Customers with active subscriptions                 |
+| Cancelled Customers | Customers who have churned                          |
+| Churn Rate          | Percentage of customers who cancelled subscriptions |
+| MRR                 | Monthly Recurring Revenue                           |
 
 ---
 
 ## Dashboard Features
 
 ### Interactive Filters
-- Customer Status Filter
-- Subscription Plan Filter
-- Transaction Date Range Filter
+
+* Customer Status Filter
+* Subscription Plan Filter
+* Transaction Date Range Filter
 
 ### Visualizations
-- Revenue by Subscription Plan
-- Customer Churn Distribution
-- Revenue Trend Over Time
-- Executive KPI Cards
+
+* Revenue by Subscription Plan
+* Customer Churn Distribution
+* Revenue Trend Over Time
+* Executive KPI Cards
 
 ---
 
 ## Technology Stack
 
-| Tool | Purpose |
-|--------|---------|
-| PostgreSQL | Data Storage |
-| SQL | Data Analysis & Querying |
-| Power BI | Dashboard Development |
-| DAX | KPI Calculations |
-| Excel/CSV | Data Source |
+| Technology | Purpose                              |
+| ---------- | ------------------------------------ |
+| PostgreSQL | Database Management                  |
+| SQL        | Data Analysis & Querying             |
+| Power BI   | Dashboard Development                |
+| DAX        | KPI and Business Metric Calculations |
+| CSV        | Source Data Storage                  |
 
 ---
 
@@ -70,8 +94,8 @@ This dashboard addresses the following business questions:
 ```DAX
 Active Customers =
 CALCULATE(
-    COUNT(customer_id),
-    status = "Active"
+    COUNT('public transactions'[customer_id]),
+    'public transactions'[status] = "Active"
 )
 ```
 
@@ -80,18 +104,19 @@ CALCULATE(
 ```DAX
 Cancelled Customers =
 CALCULATE(
-    COUNT(customer_id),
-    status = "Canceled"
+    COUNT('public transactions'[customer_id]),
+    'public transactions'[status] = "Canceled"
 )
 ```
 
 ### Churn Rate
 
 ```DAX
-Churn Rate =
+Churn Rate % =
 DIVIDE(
     [Cancelled Customers],
-    [Total Customers]
+    [Total Customers],
+    0
 )
 ```
 
@@ -100,7 +125,7 @@ DIVIDE(
 ```DAX
 MRR =
 DIVIDE(
-    [Total Revenue],
+    SUM('public transactions'[amount]),
     36
 )
 ```
@@ -116,28 +141,42 @@ DIVIDE(
 ## Business Insights
 
 ### Revenue Analysis
-- Enterprise subscriptions contribute the highest share of revenue.
-- Premium plans significantly outperform basic plans.
+
+* Enterprise subscriptions contribute the highest share of revenue.
+* Premium subscription plans generate significantly more revenue than basic plans.
+* Revenue distribution highlights the importance of customer upgrades and premium offerings.
 
 ### Customer Retention
-- Approximately 85% of customers remain active.
-- Churn rate remains around 15%, indicating relatively strong retention.
 
-### Revenue Trend
-- Revenue demonstrates stable growth patterns over the analyzed period.
-- Seasonal fluctuations and transaction spikes can be identified through trend analysis.
+* Approximately 85% of customers remain active.
+* Churn rate remains around 15%, indicating relatively strong customer retention.
+* Monitoring churn trends helps identify retention improvement opportunities.
+
+### Revenue Trends
+
+* Revenue demonstrates stable growth across the analysis period.
+* Trend analysis helps identify seasonality, customer purchasing patterns, and revenue fluctuations.
+* Historical performance can support forecasting and strategic planning.
 
 ---
 
 ## Project Structure
 
-```
+```text
 saas-revenue-analytics/
 │
 ├── dashboard/
 ├── data/
+│   └── subscription_transactions.csv
+│
 ├── database/
+│   ├── schema.sql
+│   ├── views.sql
+│   └── analytics_queries.sql
+│
 ├── scripts/
+│   └── generate_data.py
+│
 ├── saas_dashboard.png
 ├── saas_revenue_customer_analytics_dashboard.pbix
 └── README.md
@@ -147,15 +186,29 @@ saas-revenue-analytics/
 
 ## Skills Demonstrated
 
-- Data Analysis
-- SQL Querying
-- Data Modeling
-- Business Intelligence
-- Dashboard Design
-- KPI Development
-- DAX Calculations
-- Data Visualization
-- Business Metrics Analysis
+* Data Analysis
+* Business Intelligence
+* Power BI Dashboard Development
+* SQL Querying
+* PostgreSQL Database Management
+* Data Modeling
+* KPI Development
+* DAX Calculations
+* Data Visualization
+* Revenue Analytics
+* Customer Churn Analysis
+* Business Metrics Reporting
+
+---
+
+## Future Enhancements
+
+* Customer Lifetime Value (CLV) Analysis
+* Revenue Forecasting
+* Cohort Analysis
+* Retention Analysis Dashboard
+* Real-Time Data Integration
+* Automated Refresh Pipelines
 
 ---
 
@@ -163,6 +216,12 @@ saas-revenue-analytics/
 
 **Preethi Beri**
 
-LinkedIn: https://www.linkedin.com/in/preethi-beri/
+Data Science Student | Aspiring Data Analyst | Power BI Enthusiast
 
 GitHub: https://github.com/preethi-beri
+
+LinkedIn: https://www.linkedin.com/in/preethi-beri/
+
+---
+
+⭐ If you found this project useful, consider giving the repository a star.
