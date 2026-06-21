@@ -2,59 +2,54 @@
 
 ![Dashboard Preview](saas_dashboard.png)
 
-## Project Overview
+**Power BI • PostgreSQL • SQL • DAX • Business Intelligence • Data Visualization**
 
-This project presents an interactive SaaS Revenue & Customer Analytics Dashboard developed using Power BI, PostgreSQL, SQL, and DAX. The dashboard provides actionable insights into revenue performance, customer retention, subscription plan performance, churn analysis, and Monthly Recurring Revenue (MRR).
+## Overview
 
-The primary objective of this project is to help stakeholders monitor key business metrics, identify customer behavior patterns, evaluate subscription performance, and support data-driven decision-making through interactive analytics.
+The SaaS Revenue & Customer Analytics Dashboard is an interactive Business Intelligence solution built using Power BI, PostgreSQL, SQL, and DAX. The dashboard enables stakeholders to monitor revenue performance, customer retention, subscription plan effectiveness, churn trends, and Monthly Recurring Revenue (MRR) through a centralized analytics platform.
+
+Designed with an executive-level reporting approach, the dashboard transforms transactional subscription data into actionable business insights that support strategic decision-making.
 
 ---
 
 ## Project Highlights
 
-✔ Interactive KPI Dashboard
-
-✔ Revenue Analysis & Trend Monitoring
-
-✔ Customer Churn Analysis
-
-✔ Monthly Recurring Revenue (MRR) Tracking
-
-✔ Dynamic Date, Status, and Plan Filters
-
-✔ Business Intelligence Reporting using Power BI
-
-✔ PostgreSQL + SQL Data Pipeline
-
-✔ Executive-Level Dashboard Design
+* Interactive KPI Monitoring Dashboard
+* Revenue Analysis & Trend Tracking
+* Customer Churn Analysis
+* Monthly Recurring Revenue (MRR) Monitoring
+* Dynamic Date, Status, and Subscription Plan Filters
+* Executive-Level Business Intelligence Reporting
+* PostgreSQL-Powered Analytics Pipeline
+* Professional Dashboard Design & Data Visualization
 
 ---
 
 ## Business Problem
 
-SaaS businesses depend heavily on recurring revenue and customer retention. Understanding customer churn, subscription plan performance, and revenue trends is critical for sustainable business growth.
+SaaS companies rely heavily on recurring revenue and customer retention to sustain growth. Business leaders require visibility into customer behavior, subscription performance, and revenue trends to make informed decisions.
 
-This dashboard helps answer the following business questions:
+This dashboard addresses key business questions:
 
 * How much revenue is being generated?
-* What is the current customer base?
+* How large is the active customer base?
 * What percentage of customers are churning?
-* Which subscription plans generate the highest revenue?
-* How does revenue change over time?
-* What is the Monthly Recurring Revenue (MRR)?
+* Which subscription plans contribute the most revenue?
+* How are revenue trends evolving over time?
+* What is the current Monthly Recurring Revenue (MRR)?
 
 ---
 
-## Dashboard KPIs
+## Key Performance Indicators (KPIs)
 
-| KPI                 | Description                                         |
-| ------------------- | --------------------------------------------------- |
-| Total Revenue       | Total revenue generated from subscriptions          |
-| Total Customers     | Total number of customers                           |
-| Active Customers    | Customers with active subscriptions                 |
-| Cancelled Customers | Customers who have churned                          |
-| Churn Rate          | Percentage of customers who cancelled subscriptions |
-| MRR                 | Monthly Recurring Revenue                           |
+| KPI                             | Description                                   |
+| ------------------------------- | --------------------------------------------- |
+| Total Revenue                   | Total revenue generated from subscriptions    |
+| Total Customers                 | Total customer base                           |
+| Active Customers                | Customers with active subscriptions           |
+| Cancelled Customers             | Customers who have churned                    |
+| Churn Rate                      | Percentage of cancelled customers             |
+| Monthly Recurring Revenue (MRR) | Average recurring revenue generated per month |
 
 ---
 
@@ -66,7 +61,7 @@ This dashboard helps answer the following business questions:
 * Subscription Plan Filter
 * Transaction Date Range Filter
 
-### Visualizations
+### Business Visualizations
 
 * Revenue by Subscription Plan
 * Customer Churn Distribution
@@ -77,58 +72,13 @@ This dashboard helps answer the following business questions:
 
 ## Technology Stack
 
-| Technology | Purpose                              |
-| ---------- | ------------------------------------ |
-| PostgreSQL | Database Management                  |
-| SQL        | Data Analysis & Querying             |
-| Power BI   | Dashboard Development                |
-| DAX        | KPI and Business Metric Calculations |
-| CSV        | Source Data Storage                  |
-
----
-
-## Key DAX Measures
-
-### Active Customers
-
-```DAX
-Active Customers =
-CALCULATE(
-    COUNT('public transactions'[customer_id]),
-    'public transactions'[status] = "Active"
-)
-```
-
-### Cancelled Customers
-
-```DAX
-Cancelled Customers =
-CALCULATE(
-    COUNT('public transactions'[customer_id]),
-    'public transactions'[status] = "Canceled"
-)
-```
-
-### Churn Rate
-
-```DAX
-Churn Rate % =
-DIVIDE(
-    [Cancelled Customers],
-    [Total Customers],
-    0
-)
-```
-
-### Monthly Recurring Revenue (MRR)
-
-```DAX
-MRR =
-DIVIDE(
-    SUM('public transactions'[amount]),
-    36
-)
-```
+| Technology | Purpose                               |
+| ---------- | ------------------------------------- |
+| Power BI   | Dashboard Development & Visualization |
+| PostgreSQL | Data Storage & Management             |
+| SQL        | Data Analysis & Querying              |
+| DAX        | KPI & Business Metric Calculations    |
+| CSV        | Source Dataset                        |
 
 ---
 
@@ -140,23 +90,23 @@ DIVIDE(
 
 ## Business Insights
 
-### Revenue Analysis
+### Revenue Performance
 
-* Enterprise subscriptions contribute the highest share of revenue.
-* Premium subscription plans generate significantly more revenue than basic plans.
-* Revenue distribution highlights the importance of customer upgrades and premium offerings.
+* Enterprise subscription plans generated the highest revenue contribution, highlighting the importance of premium customer segments.
+* Premium plans significantly outperformed basic subscription tiers in revenue generation.
+* Revenue distribution demonstrates the business value of customer upgrades and higher-tier subscriptions.
 
-### Customer Retention
+### Customer Retention Analysis
 
 * Approximately 85% of customers remain active.
-* Churn rate remains around 15%, indicating relatively strong customer retention.
-* Monitoring churn trends helps identify retention improvement opportunities.
+* Churn rate is maintained at around 15%, indicating relatively strong customer retention.
+* Churn monitoring provides valuable insights for retention strategy development.
 
 ### Revenue Trends
 
-* Revenue demonstrates stable growth across the analysis period.
-* Trend analysis helps identify seasonality, customer purchasing patterns, and revenue fluctuations.
-* Historical performance can support forecasting and strategic planning.
+* Revenue remained stable throughout the analysis period.
+* Trend analysis helps identify seasonal patterns, customer purchasing behavior, and revenue fluctuations.
+* Historical performance data supports forecasting and strategic planning initiatives.
 
 ---
 
@@ -186,8 +136,8 @@ saas-revenue-analytics/
 
 ## Skills Demonstrated
 
+* Business Intelligence & Reporting
 * Data Analysis
-* Business Intelligence
 * Power BI Dashboard Development
 * SQL Querying
 * PostgreSQL Database Management
@@ -206,9 +156,9 @@ saas-revenue-analytics/
 * Customer Lifetime Value (CLV) Analysis
 * Revenue Forecasting
 * Cohort Analysis
-* Retention Analysis Dashboard
+* Customer Retention Dashboard
 * Real-Time Data Integration
-* Automated Refresh Pipelines
+* Automated Data Refresh Pipelines
 
 ---
 
@@ -216,7 +166,7 @@ saas-revenue-analytics/
 
 **Preethi Beri**
 
-Data Science Student | Aspiring Data Analyst | Power BI Enthusiast
+Data Analyst | Data Science Student | Business Intelligence Enthusiast
 
 GitHub: https://github.com/preethi-beri
 
